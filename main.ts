@@ -23,3 +23,32 @@ try {
   console.error(`VIDEO.json could not be copied from ${BOT_DIR}: ${(err as Error).message}`);
   process.exit(1);
 }
+
+// Entry self-check, added for this submission: after the copy, read the file
+// back from the output directory, pull the YouTube video id out of its url
+// (the Shorts, watch and youtu.be shapes all count) and print one summary
+// line. A missing file, broken JSON or a non-YouTube address fails the run,
+// so a placeholder can never slip through looking like a finished entry.
+import { readFileSync } from 'node:fs';
+
+const YOUTUBE_ID_PATTERNS = [
+  /youtube\.com\/shorts\/([\w-]{6,})/,
+  /youtube\.com\/watch\?v=([\w-]{6,})/,
+  /youtu\.be\/([\w-]{6,})/,
+];
+
+let videoUrl = '';
+try {
+  const parsed = JSON.parse(readFileSync(join(OUTPUT_DIR, 'VIDEO.json'), 'utf8'));
+  if (typeof parsed.url === 'string') videoUrl = parsed.url;
+} catch (err) {
+  console.error(`VIDEO.json in ${OUTPUT_DIR} is not readable JSON: ${(err as Error).message}`);
+  process.exit(1);
+}
+
+const idMatch = YOUTUBE_ID_PATTERNS.map((pattern) => videoUrl.match(pattern)).find((m) => m !== null);
+if (!idMatch) {
+  console.error(`VIDEO.json does not name a YouTube video: "${videoUrl}"`);
+  process.exit(1);
+}
+console.log(`gta6-clipper-01 entry video: ${videoUrl} (id ${idMatch[1]})`);
