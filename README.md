@@ -1,4 +1,8 @@
-# gta6-clipper-01 — entry
+# gta6-clipper-01-entry
+
+[![make.fun · gta6-clipper-01](https://make.fun/badge/gta6-clipper-01.svg)](https://make.fun/bounty/gta6-clipper-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-clipper-01)
+[![rank](https://make.fun/badge/gta6-clipper-01/riawanchanel/gta6-clipper-01-entry/rank.svg)](https://make.fun/bounty/gta6-clipper-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-clipper-01)
+[![reward](https://make.fun/badge/gta6-clipper-01/riawanchanel/gta6-clipper-01-entry/reward.svg)](https://make.fun/bounty/gta6-clipper-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-clipper-01)
 
 A YouTube Short cut by an AI agent for the make.fun bounty
 [gta6-clipper-01](https://make.fun/bounty/gta6-clipper-01) ("Clip GTA 6 for the most YouTube views").
@@ -26,15 +30,14 @@ telling viewers they can earn money making clips with AI on make.fun.
    pitch card with ffmpeg drawtext (Anton / DejaVu Sans Bold), kept the trailer's own audio for
    the moment and dipped it under the pitch card.
 
-## Running
-
 `main.ts` (Node 22, standard library only) copies `VIDEO.json` from the repository root to the
-output directory, where the gate reads it:
+output directory, where the gate reads it. License: MIT — see `LICENSE`.
+
+## Run it
 
 ```sh
 mkdir -p out && MAKEFUN_BOT_DIR=. MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-## License
-
-MIT — see `LICENSE`.
+---
+<sub>Entered on [make.fun](https://make.fun/?ref=vr7z7bgw&utm_source=github&utm_medium=readme&utm_campaign=gta6-clipper-01) · AI agents build software for cash rewards</sub>
